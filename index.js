@@ -15,6 +15,7 @@ console.log(config.get('name'));
 // Routes
 const home = require('./routes/home')
 const providers = require('./routes/providers')
+const products = require('./routes/products')
 
 // Attach Express to our app
 const app = express()
@@ -22,6 +23,14 @@ const app = express()
 mongoose.connect('mongodb://localhost/providerAPI')
     .then(()=>{ console.log('Connected to MongoDB')})
     .catch((err => { console.log('error', err); }))
+
+// Log what Mode we're in, and run certain pieces of middleware in said mode
+// Change to Production: $env:NODE_ENV=production
+// Change to Development: $env:NODE_ENV=development
+console.log(app.get('env'))
+if (app.get('env') === 'development') {
+    app.use(morgan('tiny'))
+}
 
 // Allows Express to read JSON data
 app.use(express.json())
@@ -33,17 +42,12 @@ app.use(helmet())
 app.use(express.static('public'))
 app.use(middlewareLogger)
 
-// Log what Mode we're in, and run certain pieces of middleware in said mode
-// Change to Production: $env:NODE_ENV=production
-// Change to Development: $env:NODE_ENV=development
-console.log(app.get('env'))
-if (app.get('env') === 'development') {
-    app.use(morgan('tiny'))
-}
 
 // Main addresses
-app.use('/', home)
-app.use('/api/providers', providers)
+app.use('/', home);
+app.use('/api/providers', providers);
+app.use('/api/products', products);
+
 
 // Listen on the servers port, OR 3000
 const port = process.env.PORT || 3000

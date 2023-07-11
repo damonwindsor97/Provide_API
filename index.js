@@ -20,7 +20,7 @@ const providers = require('./routes/providers')
 const app = express()
 
 mongoose.connect('mongodb://localhost/providerAPI')
-    .then(()=>{ console.log('connected')})
+    .then(()=>{ console.log('Connected to MongoDB')})
     .catch((err => { console.log('error', err); }))
 
 // Allows Express to read JSON data

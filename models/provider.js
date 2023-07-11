@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 
+const { productSchema } = require('./product')
+
 // Define our Schema for a Provider
 const providerSchema = new mongoose.Schema({
     name: {type: String, required: true},
     developer: {type: [String], required: true},
-    products: {type: [String], required: true},
+    productIds: {type: [productSchema], required: true},
     paymentMethods: {type: [String], required: true},
     isTrusted: {type: Boolean, required: true}
 })
@@ -20,7 +22,7 @@ function validateProvider(provider) {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
         developer: Joi.array().min(1).required(),
-        products: Joi.array().min(1).required(),
+        productIds: Joi.array().required(),
         paymentMethods: Joi.array().min(1).required(),
         isTrusted: Joi.boolean().required()
     })

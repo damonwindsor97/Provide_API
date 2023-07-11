@@ -1,5 +1,6 @@
 // Import Models
 const { Provider, validateProvider } = require('../models/provider')
+const {Product} = require('../models/product')
 
 
 
@@ -27,12 +28,25 @@ module.exports = {
         const { error } = validateProvider(req.body)
         // If result contains error, send 400 with error message
         if (error) return res.status(400).send(error.details)
+
+        const product = await Product.findById(req.body.productIds)
+        if(!product) return res.status(404).send("Invalid Product ID")
           
         try {
             let provider = new Provider({
                 name: req.body.name,
                 developer: req.body.developer,
-                products: req.body.products,
+                productIds: {
+                    _id: product._id,
+                    productName: product.productName,
+                    developer: product.developer,
+                    verification: product.verification,
+                    features: product.features,
+                    detectionHistory: product.detectionHistory,
+                    isDetected: product.isDetected,
+                    isUpdating: product.isUpdating,
+                    isUpdated: product.isUpdated
+                },
                 paymentMethods: req.body.paymentMethods,
                 isTrusted: req.body.isTrusted
             });

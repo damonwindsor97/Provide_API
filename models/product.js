@@ -1,55 +1,18 @@
 const mongoose = require('mongoose');
 const Joi = require('joi')
 
-const { providerSchema } = require('./provider')
+// const { providerSchema } = require('./provider')
 
 const productSchema = new mongoose.Schema({
-    productName: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 255,
-        trim: true
-    },
-
-    // TO BE ADDED - Relationship with Developer Database
-    developer: {
-        type: String,
-        required: true,
-        trim: true
-    },
-
-    verification: {
-        type: String,
-        required: true
-    },
-    features: {
-        type: String
-    },
-    detectionHistory: {
-        type: [String]
-    },
-    isDetected: {
-        type: Boolean,
-        required: true
-    },
-    isUpdating: {
-        type: Boolean,
-        required: true
-    },
-    isUpdated: {
-        type: Boolean,
-        required: true
-    },
-    // Relationship with Provider Database - switch relationship to Provider DB
-    providerId: {
-        type: providerSchema,
-        required: true
-    },
-    publishDate: {
-        type: Date,
-        default: Date.now
-    }
+    productName: {type: String, required: true, minlength: 2, maxlength: 255, trim: true },
+    developer: {type: String, required: true, trim: true},
+    verification: {type: String, required: true},
+    features: { type: String},
+    detectionHistory: {type: [String]},
+    isDetected: {type: Boolean, required: true},
+    isUpdating: {type: Boolean, required: true},
+    isUpdated: {type: Boolean, required: true},
+    publishDate: {type: Date, default: Date.now}
 })
 
 const Product = mongoose.model('Product', productSchema);
@@ -64,7 +27,7 @@ function validateProduct(product) {
         isDetected: Joi.boolean().required(),
         isUpdating: Joi.boolean().required(),
         isUpdated: Joi.boolean().required(),
-        providerId: Joi.required(),
+        // providerId: Joi.required(),
     })
     return schema.validate(product)
 }

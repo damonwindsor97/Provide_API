@@ -65,7 +65,13 @@ module.exports = {
         if (error) return res.status(400).send(error.details)
           
         try {
-            let provider = await Provider.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true })
+            // The data that can be updated
+            let provider = await Provider.findByIdAndUpdate(req.params.id, 
+                { name: req.body.name }, 
+                { productIds: req.body.productIds },
+                {paymentMethods: req.body.paymentMethods},
+                {isTrusted: req.body.isTrusted},
+                { new: true })
             if(!provider) return res.status(404).send('The Provider with the given ID was not found.')
             res.send(provider);
         } catch (error) {

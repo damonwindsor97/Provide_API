@@ -6,8 +6,8 @@ module.exports = {
     async postProduct(req, res) {
         const { error } = validateProduct(req.body)
         if (error) return res.status(400).send(error.details)
-
         try {
+            // The data that can be updated
             let product = new Product({
                 productName: req.body.productName,
                 developer: req.body.developer,

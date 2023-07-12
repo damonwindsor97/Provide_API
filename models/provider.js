@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 
+// Import productSchema for the relationship
 const { productSchema } = require('./product')
 
 // Define our Schema for a Provider

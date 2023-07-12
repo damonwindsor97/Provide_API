@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi')
 
-// const { providerSchema } = require('./provider')
-
 const productSchema = new mongoose.Schema({
     productName: {type: String, required: true, minlength: 2, maxlength: 255, trim: true },
     developer: {type: String, required: true, trim: true},
@@ -27,7 +25,6 @@ function validateProduct(product) {
         isDetected: Joi.boolean().required(),
         isUpdating: Joi.boolean().required(),
         isUpdated: Joi.boolean().required(),
-        // providerId: Joi.required(),
     })
     return schema.validate(product)
 }

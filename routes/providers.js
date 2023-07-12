@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+//  (only 1 item from Products array showing)
+
 // Import Controller
 const providersController = require('../controllers/provider')
 
@@ -11,13 +13,11 @@ router.get('/', providersController.getAllProviders);
 // GET Provider by ID
 router.get('/:id', providersController.getProviderById)
 
-
 // POST to Endpoint
 router.post('/', providersController.postProvider)
 
 // PUT Endpoint
 router.put('/:id', providersController.putProviderById)
-
 
 // DELETE Endpoint
 router.delete('/:id', providersController.deleteProviderById);

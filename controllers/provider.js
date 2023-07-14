@@ -65,7 +65,7 @@ module.exports = {
         if (error) return res.status(400).send(error.details)
           
         try {
-            // The data that can be updated
+            // The data that CAN be updated
             let provider = await Provider.findByIdAndUpdate(req.params.id, 
                 { name: req.body.name }, 
                 { productIds: req.body.productIds },

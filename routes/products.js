@@ -5,8 +5,11 @@ const router = express.Router();
 
 const productsController = require('../controllers/products');
 
+const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
+
 // POST to Products - working
-router.post('/', productsController.postProduct);
+router.post('/', [auth], productsController.postProduct);
 
 // GET all Products - working
 router.get('/', productsController.getAllProducts);
@@ -15,9 +18,9 @@ router.get('/', productsController.getAllProducts);
 router.get('/:id', productsController.getProductById);
 
 // PUT Product by ID - working
-router.put('/:id', productsController.putProductById);
+router.put('/:id', [auth], productsController.putProductById);
 
 // DELETE Product by ID - working
-router.delete('/:id', productsController.deleteProductById);
+router.delete('/:id', [auth], productsController.deleteProductById);
 
 module.exports = router;

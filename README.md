@@ -1,8 +1,9 @@
 # cheat_provider_api
- An API featuring common providers amongst those I play with
+ An API featuring common and known providers of game enhancers.
 Will feature a few; Providers, Developers & their products. Various bits of information will be attached to each database to ensure users can get some helpful information such as;
 * Products Available
-* Last Detection
+* Features
+* Detection History
 * isDetected
 * isUpdating
 * isUpdated

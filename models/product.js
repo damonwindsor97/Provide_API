@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
     isDetected: {type: Boolean, required: true},
     isUpdating: {type: Boolean, required: true},
     isUpdated: {type: Boolean, required: true},
+    controllerSupport: Joi.boolean().required(),
     publishDate: {type: Date, default: Date.now}
 })
 
@@ -25,6 +26,7 @@ function validateProduct(product) {
         isDetected: Joi.boolean().required(),
         isUpdating: Joi.boolean().required(),
         isUpdated: Joi.boolean().required(),
+        controllerSupport: Joi.boolean().required(),
     })
     return schema.validate(product)
 }

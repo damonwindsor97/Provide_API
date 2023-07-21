@@ -17,6 +17,7 @@ module.exports = {
                 isDetected: req.body.isDetected,
                 isUpdating: req.body.isUpdating,
                 isUpdated: req.body.isUpdated,
+                controllerSupport: req.body.controllerSupport
             })
             product = await product.save()
             res.send(product);

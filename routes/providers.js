@@ -18,7 +18,7 @@ router.get('/', providersController.getAllProviders);
 router.get('/:id', providersController.getProviderById)
 
 // POST to Endpoint
-router.post('/', auth, providersController.postProvider)
+router.post('/', providersController.postProvider)
 
 // PUT Endpoint
 router.put('/:id', providersController.putProviderById)

@@ -9,7 +9,7 @@ const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
 
 // POST to Products - working
-router.post('/', [auth], productsController.postProduct);
+router.post('/', [auth, admin], productsController.postProduct);
 
 // GET all Products - working
 router.get('/', productsController.getAllProducts);

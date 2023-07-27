@@ -15,7 +15,7 @@ const providerSchema = new mongoose.Schema({
 
 // Create Model, name of the collection, then using the Schema
 // Model will allow us to talk to the DB
-const Provider = mongoose.model('Provider', providerSchema);
+const Provider = mongoose.model("Provider", providerSchema);
 
 
 function validateProvider(provider) {
@@ -23,7 +23,7 @@ function validateProvider(provider) {
     const schema = Joi.object({
         name: Joi.string().min(3).required(),
         developer: Joi.array().min(1).required(),
-        productIds: Joi.array().required(),
+        productIds: Joi.array().items().required(),
         paymentMethods: Joi.array().min(1).required(),
         isTrusted: Joi.boolean().required()
     })

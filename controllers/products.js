@@ -7,7 +7,6 @@ module.exports = {
         const { error } = validateProduct(req.body)
         if (error) return res.status(400).send(error.details)
         try {
-            // The data that can be updated
             let product = new Product({
                 productName: req.body.productName,
                 developer: req.body.developer,
@@ -49,15 +48,17 @@ module.exports = {
         if (error) return res.status(400).send(error.details)
 
         try {
-            let product = await Product.findByIdAndUpdate(req.params.id,   {productName: req.body.productName},
-                 {features: req.body.features}, 
-                 {detectionHistory: req.body.detectionHistory},
-                 {isDetected: req.body.isDetected}, 
-                 {isUpdated: req.body.isUpdated}, 
-                 {isUpdating: req.body.isUpdating},
-                 {new: true})
-                 if(!product) return res.status(404).send("The Product with the given ID was not found.")
-                 res.send(product)
+            let product = await Product.findByIdAndUpdate(req.params.id,   
+                // The data that can be updated
+                {productName: req.body.productName},
+                {features: req.body.features}, 
+                {detectionHistory: req.body.detectionHistory},
+                {isDetected: req.body.isDetected}, 
+                {isUpdated: req.body.isUpdated}, 
+                {isUpdating: req.body.isUpdating},
+                {new: true})
+                if(!product) return res.status(404).send("The Product with the given ID was not found.")
+                res.send(product)
         } catch (error) {
             console.log(error)
         }

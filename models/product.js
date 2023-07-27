@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
-const Joi = require('joi')
+const Joi = require('joi');
 
 const productSchema = new mongoose.Schema({
-    productName: {type: String, required: true, minlength: 2, maxlength: 255, trim: true },
-    developer: {type: String, required: true, trim: true},
-    verification: {type: String, required: true},
-    features: { type: Object},
-    detectionHistory: {type: [String]},
-    isDetected: {type: Boolean, required: true},
-    isUpdating: {type: Boolean, required: true},
-    isUpdated: {type: Boolean, required: true},
-    controllerSupport: Joi.boolean().required(),
-    publishDate: {type: Date, default: Date.now}
+    productName: { type: String, required: true, minlength: 2, maxlength: 255, trim: true },
+    developer: { type: String, required: true, trim: true },
+    verification: { type: String, required: true },
+    features: { type: Object },
+    detectionHistory: { type: [String] },
+    isDetected: { type: Boolean, required: true },
+    isUpdating: { type: Boolean, required: true },
+    isUpdated: { type: Boolean, required: true },
+    controllerSupport: { type: Boolean },
+    publishDate: { type: Date, default: Date.now }
 })
 
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model("Product", productSchema);
 
 function validateProduct(product) {
     const schema = Joi.object({

@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-//  (only 1 item from Products array showing)
 
 // Import Controller
 const providersController = require('../controllers/provider')

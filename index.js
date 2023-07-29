@@ -15,6 +15,7 @@ const middlewareLogger = require('./middleware/middlewareLogger')
 const home = require('./routes/home')
 const providers = require('./routes/providers')
 const products = require('./routes/products')
+const spoofers = require('./routes/spoofers')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
 
@@ -66,6 +67,7 @@ app.use(middlewareLogger)
 app.use('/', home);
 app.use('/api/providers', providers);
 app.use('/api/products', products);
+app.use('/api/spoofers', spoofers);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 

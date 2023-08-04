@@ -1,3 +1,8 @@
 {
-    "name": "Swegnesiums Cheat Provider API - Development"
+    "name": "Provide API | Development",
+    "providersPrivateKey": "providersPassword",
+    "port": "27017",
+    "db": {
+        "connectionString": "mongodb+srv://dbAdmin:ZrBsfFks4jmdUimp@providecluster.okqx5ku.mongodb.net/provideAPI"
+    }
 }

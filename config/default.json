@@ -1,8 +1,8 @@
 {
     "name": "Provide API | By Swegnesium",
-    "providersPrivateKey": "providersPassword",
-    "port": "27017",
+    "providersPrivateKey": "",
+    "port": "",
     "db": {
-        "connectionString": "mongodb+srv://dbAdmin:ZrBsfFks4jmdUimp@providecluster.okqx5ku.mongodb.net/ProvideAPI"
+        "connectionString": ""
     }
 }

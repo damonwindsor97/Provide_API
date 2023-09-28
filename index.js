@@ -5,6 +5,7 @@
 // Imports
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors');
 
 // Middleware
 const helmet = require('helmet')
@@ -61,6 +62,7 @@ app.use(helmet())
 // useful for images for certain providers etc.
 app.use(express.static('public'))
 app.use(middlewareLogger)
+
 
 
 // Main addresses

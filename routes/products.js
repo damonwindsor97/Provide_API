@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors')
 
-app.use(cors({
+router.use(cors({
     origin: ["http://localhost:3000/*", "https://www.provideapi.dev/*"]
 }))
 

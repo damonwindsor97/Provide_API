@@ -29,10 +29,6 @@ app.use((req, res, next) => {
     "https://www.provideapi.dev/data"
   );
   res.setHeader(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000/data"  
-  );
-  res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, PUT, POST, DELETE"
   );

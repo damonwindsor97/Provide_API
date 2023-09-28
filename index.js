@@ -26,7 +26,11 @@ const app = express()
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    ["https://www.provideapi.dev/data", "http://localhost:3000/data"]
+    "https://www.provideapi.dev/data"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "http://localhost:3000/data"  
   );
   res.setHeader(
     "Access-Control-Allow-Methods",

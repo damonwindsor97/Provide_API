@@ -57,7 +57,9 @@ if (app.get('env') === 'development') {
 app.use(express.json()); //Parse incoming JSON data, available under the req.body
 // URLencoded allows us to pull querys from address bar
 app.use(express.urlencoded({ extended: true }))
-app.use(helmet())
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}))
 // creates endpoints for everything within the 'public' folder
 // useful for images for certain providers etc.
 app.use(express.static('public'))

@@ -2,18 +2,10 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors')
 
-var whitelist = ['http://localhost:3000/', 'https://www.provideapi.dev/']
-var corsOptions = {
-    origin: function(origin, callback) {
-        if (whitelist.indexOf(origin) !== -1){
-            callback(null, true)
-        } else {
-            callback(new error('Not allowed by CORS'))
-        }
-    }
-}
+app.use(cors({
+    "origin": false
+}))
 
-//  (only 1 item from Features array showing)
 
 const productsController = require('../controllers/products');
 
@@ -24,7 +16,7 @@ const admin = require('../middleware/admin')
 router.post('/', [auth, admin], productsController.postProduct);
 
 // GET all Products - working
-router.get('/', cors(corsOptions), productsController.getAllProducts);
+router.get('/', productsController.getAllProducts);
 
 // GET Product by ID - working
 router.get('/:id', productsController.getProductById);

@@ -1,7 +1,0 @@
-{
-    "providersPrivateKey": "providersPassword",
-    "port": "PORT",
-    "db": {
-        "connectionString": "DB_CONNECTION_STRING"
-    }
-}
